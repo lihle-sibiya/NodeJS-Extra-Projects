@@ -1,12 +1,23 @@
 //Import Meals Model for database data  
-const mealModel = require("../models/mealModel");
+const mealModel = require('../models/mealModel');
 
 //menu controller takes the request, response and next object 
+// exports.getMenuController = (req, res, next) => {
+//   //Get menu meals from model (Array)
+//     const meals = mealModel.getMeals();
+
+//   //Show JSON object of Meals Menu data
+//  // res.json(meals);
+//   res.render('menu', './models/mealModel');
+// };
+
 exports.getMenuController = (req, res, next) => {
-  //Get menu meals from model (Array)
-    const meals = mealModel.getMeals();
-    
-  //Show JSON object of Meals Menu data
- // res.json(meals);
-  res.render('menu', './models/mealModel');
+  // Fetch menu meals from the database using the Mongoose model
+  mealModel.find({}, (err, meals) => {
+    if (err) {
+      return next(err);
+    }
+    // Render the "menu" view and pass the fetched meals as data
+    res.render('menu', { meals });
+  });
 };
