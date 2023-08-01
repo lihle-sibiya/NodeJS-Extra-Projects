@@ -1,0 +1,12 @@
+//Import Meals Model for database data  
+const mealModel = require("../models/mealModel");
+
+//menu controller takes the request, response and next object 
+exports.getMenuController = (req, res, next) => {
+  //Get menu meals from model (Array)
+    const meals = mealModel.getMeals();
+    
+  //Show JSON object of Meals Menu data
+ // res.json(meals);
+  res.render('menu', './models/mealModel');
+};
