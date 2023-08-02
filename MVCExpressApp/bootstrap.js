@@ -1,11 +1,8 @@
 const route = require('./routes/route');
 
+module.exports = (router) => {
+        router.use('/', route);//Initialize Routes
+    
+};
 
-// module.exports = (router) => {
-//     //Initialize Routes
-//     route.use(router);
-// };
 
-route.use(router);
-
-module.exports = bootstrap;

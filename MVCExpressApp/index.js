@@ -7,11 +7,14 @@ mongoose.connect("mongodb://127.0.0.1:27017/restaurant_menu", { useNewUrlParser:
 const app = new express();
 const router = express.Router();
 
-const pug = require('pug');
 app.set('view engine', 'pug');
 
-bootstrap(router);
-app.use(router); 
+const path = require('path');
+app.set('views', path.resolve('./views'));
+
+
+bootstrap(app);
+app.use('/', router); 
 app.use(express.static('public'));
 
 const db = mongoose.connection;

@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const mealsController = require("../controllers/mealsController");
+const mealsController = require('../controllers/mealsController');
 
-router.get('/menu', mealsController.getMenuController);
+router.get('/menu', async (req, res) => {
+  const meals = await mealsController.getMeals();
+  res.render('menu', { meals });
+});
 
 router.get('/', (req, res) => {
-  res.send('Welcome to our restaurant!');
+  res.render('index');
 });
 
 module.exports = router;
