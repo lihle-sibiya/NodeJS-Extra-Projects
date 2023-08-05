@@ -16,8 +16,13 @@ const mealSchema = new mongoose.Schema({
     default: 0,
     min: [0, "Meal cannot have a negative cost"],
   },
+  image: {
+    type: String,
+    required: true,
+  },
 });
 
 const Meal = mongoose.model("Meal", mealSchema);
 
 module.exports = Meal;
+

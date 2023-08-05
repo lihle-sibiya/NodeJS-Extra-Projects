@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+  <%- include('layouts/header');-%>
+
+    <body>
+      <!-- layouts navbar-->
+      <%- include('layouts/navbar');-%>
+
+        <!-- Page Header-->
+        <header class="container-xxl bg-white p-0"> <!-- Fixed the typo here -->
+          <!-- Spinner Start -->
+          <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          <!-- Spinner End -->
+        </header>
+
+        <!-- Main Content-->
+        <main>
+                    <section class="pictures">
+            <div class="container">
+              <div class="row">
+                <% meals.forEach((meal)=> { %>
+                  <div class="col-md-4 mb-4">
+                    <div class="meal">
+                      <img src="/images/<%= meal.type %>.jpg" alt="<%= meal.name %>" class="img-fluid">
+                      <h3>
+                        <%= meal.name %> - $<%= meal.price %>
+                      </h3>
+                    </div>
+                  </div>
+                  <% }); %>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        
+        <%- include('layouts/footer');-%>
+          <%- include('layouts/scripts');-%>
+
+    </body>
+
+</html>
